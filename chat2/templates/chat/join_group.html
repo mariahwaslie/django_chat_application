@@ -1,0 +1,32 @@
+{%  extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="container row col-md-8 ">
+    <div class="list-group">
+        {% for group in groups %}
+            <ul>
+            <li class="list-group-item">
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold "><a class='light-link' href="{% url 'chat2:room' room_name=group.slug %}">{{group.name}}</a></div>
+                    {{ group.description}}
+                    </div>
+                <button class="btn btn-dark"  ><a class='link-light' href="{% url 'chat2:room' room_name=group.slug %}">Join</a></button>
+            </li>
+            </ul>
+        {% endfor %}
+
+
+<ul>
+     <li class="list-group-item">
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold ">
+                    <a href="{% url 'chat2:createroom' %}" >create a group</a>
+                    </div>
+                    </div>
+     </li>
+    </ul>
+
+    </div>
+    </div>
+
+{% endblock %}
