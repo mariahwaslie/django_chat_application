@@ -6,11 +6,6 @@ from django.utils.text import slugify
 from django.urls import reverse
 
 
-#create an Inbox for a user
-# class Inbox(models.Model):
-#     user = models.ForeignKey(User, on_delete=models.CASCADE)
-#     id = models.UUIDField(primary_key=True, default=uuid4, editable=False,unique=True)
-
 class Message(models.Model):
     sender= models.ForeignKey(User, on_delete=models.CASCADE, related_name='sender')
     receiver = models.ForeignKey(User, on_delete=models.CASCADE, related_name='receiver')
@@ -34,10 +29,3 @@ class ChatGroup(models.Model):
     def get_absolute_url(self):
         return reverse('chat2:single', kwargs={'slug':self.slug})
 
-# class GroupMessage(models.Model):
-#     group_sender = models.ForeignKey(User, on_delete=models.CASCADE, related_name='sender')
-#     group_sent_to = models.ForeignKey(ChatGroup, on_delete=models.CASCADE, related_name='group')
-#     content = models.TextField(max_length=500)
-#     timestamp = models.DateTimeField(auto_now_add=True)
-#
-#
