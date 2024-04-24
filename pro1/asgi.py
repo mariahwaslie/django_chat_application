@@ -19,13 +19,6 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "pro1.settings")
 django_asgi_application = get_asgi_application()
 import chat2.routing
 
-
-#ASGI_APPLICATION = "pro1.asgi_application"
-
-# Initialize Django ASGI applidaphne cation early to ensure the AppRegistry
-# is populated before importing code that may import ORM models.
-
-#
 application = ProtocolTypeRouter(
     {
         "http": django_asgi_application,
