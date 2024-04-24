@@ -29,15 +29,6 @@ class JoinChatGroup(ListView,LoginRequiredMixin):
     model = ChatGroup
     template_name = "chat/join_group.html"
     context_object_name = 'groups'
-    # extra_context = {'groups':ChatGroup.objects.all()}
-    #
-    # def get(self, request, *args, **kwargs):
-    #     groups = get_object_or_404(ChatGroup,slug=self.kwargs.get("slug"))
-    #
-    #     # try:
-    #     #     ChatGroup.objects.create(user=self.request.user,group=group)
-    #     return super().get(request, *args, **kwargs)
-
 
 def index(request):
     return render(request, "chat/index.html")
