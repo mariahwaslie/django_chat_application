@@ -2,7 +2,7 @@
 
 A Django chat application with user registration, login, profiles, chat group creation, and real-time group chat over WebSockets.
 
-The Django project lives in the nested `django_chat_application/` directory. The main project package is `pro1`, with separate apps for accounts and chat.
+The main project package is `pro1`, with separate apps for accounts and chat.
 
 ## Features
 
@@ -21,29 +21,29 @@ The Django project lives in the nested `django_chat_application/` directory. The
 ```text
 .
 ├── README.md
-└── django_chat_application/
-    ├── manage.py
-    ├── db.sqlite3
-    ├── account/
-    │   ├── forms.py
-    │   ├── urls.py
-    │   ├── views.py
-    │   └── templates/account/
-    ├── chat2/
-    │   ├── consumers.py
-    │   ├── forms.py
-    │   ├── models.py
-    │   ├── routing.py
-    │   ├── urls.py
-    │   ├── views.py
-    │   └── templates/chat/
-    ├── pro1/
-    │   ├── asgi.py
-    │   ├── settings.py
-    │   ├── urls.py
-    │   └── views.py
-    ├── static/css/
-    └── templates/
+├── requirements.txt
+├── manage.py
+├── db.sqlite3
+├── account/
+│   ├── forms.py
+│   ├── urls.py
+│   ├── views.py
+│   └── templates/account/
+├── chat2/
+│   ├── consumers.py
+│   ├── forms.py
+│   ├── models.py
+│   ├── routing.py
+│   ├── urls.py
+│   ├── views.py
+│   └── templates/chat/
+├── pro1/
+│   ├── asgi.py
+│   ├── settings.py
+│   ├── urls.py
+│   └── views.py
+├── static/css/
+└── templates/
 ```
 
 ## Apps
@@ -72,30 +72,29 @@ Contains the project settings, root URL routing, ASGI configuration, and home pa
 
 ## Requirements
 
-This repository does not currently include a `requirements.txt` file. Based on the imports and settings, the project expects these Python packages:
+A `requirements.txt` file is included with the Python packages needed by the app:
 
 ```text
-Django
-channels
-daphne
-channels-redis
-django-bootstrap5
-django-braces
+Django==5.0.4
+channels>=4.0,<5.0
+daphne>=4.0,<5.0
+channels-redis>=4.0,<5.0
+django-bootstrap5>=24.0,<26.0
+django-braces>=1.15,<2.0
 ```
 
 Redis is also required because `CHANNEL_LAYERS` is configured to use `channels_redis` at `localhost:6379`.
 
 ## Setup
 
-From the repository root:
+From this folder:
 
 ### macOS
 
 ```bash
-cd django_chat_application
 python -m venv .venv
 source .venv/bin/activate
-pip install Django channels daphne channels-redis django-bootstrap5 django-braces
+pip install -r requirements.txt
 python manage.py migrate
 ```
 
@@ -125,13 +124,12 @@ http://127.0.0.1:8000/
 
 ### Windows / PC
 
-From the repository root:
+From this folder:
 
 ```powershell
-cd django_chat_application
 py -m venv .venv
 .\.venv\Scripts\activate
-pip install Django channels daphne channels-redis django-bootstrap5 django-braces
+pip install -r requirements.txt
 python manage.py migrate
 ```
 
